@@ -4,23 +4,23 @@
 - [Sobre](#sobre)
 - [API](#api)
   - [Protocol](#protocol)
-  - [Autenticação](#autenticacao)
-  - [Segurança](#seguranca)
-  - [Parâmetros de objeto na requisição](#parametros-de-objeto-na-requisicao)
-- [Métodos](#metodos)
-  - [Diretórios](#diretorios)
+  - [Autenticação](#autenticação)
+  - [Segurança](#segurança)
+  - [Parâmetros de objeto na requisição](#parâmetros-de-objeto-na-requisição)
+- [Métodos](#métodos)
+  - [Diretórios](#diretórios)
   - [Contatos](#contatos)
   - [Callcenter](#callcenter)
   - [Dialplan](#dialplan)
-  - [Telefônica](#telefonica)
+  - [Telefônica](#telefônica)
   - [DB, SIP, Verto e Outros](#db-sip-verto-e-outros)
 - [Exemplos de Uso](#exemplos-de-uso)
-  - [Exemplo 1: Função genérica `api_call`](#exemplo-1-funcao-generica-apicall)
-  - [Exemplo 2: Método `help`](#exemplo-2-metodo-help)
-  - [Exemplo 3: Método `tel_monitor_call_get`](#exemplo-3-metodo-tel_monitor_call_get)
-  - [Exemplo 4: Método `tel_util_call`](#exemplo-4-metodo-tel_util_call)
+  - [Exemplo 1: Função genérica `api_call`](#exemplo-1-função-genérica-apicall)
+  - [Exemplo 2: Método `help`](#exemplo-2-método-help)
+  - [Exemplo 3: Método `tel_monitor_call_get`](#exemplo-3-método-tel_monitor_call_get)
+  - [Exemplo 4: Método `tel_util_call`](#exemplo-4-método-tel_util_call)
   - [Exemplo 5: Outros exemplos](#exemplo-5-outros-exemplos)
-- [Anexo I – Exemplo de Array de Filtro](#anexo-i-exemplo-de-array-de-filtro)
+- [Anexo I – Exemplo de Array de Filtro](#anexo-i--exemplo-de-array-de-filtro)
 
 ---
 
@@ -34,13 +34,16 @@ Este manual explica o uso do módulo API da CommsMundi (CM). Nele são listados 
 
 ### Protocol
 
-A comunicação com a API pública da CM é feita via **JSON RPC 2.0**.
-Consulte [JSON RPC 2.0 Specification](http://www.jsonrpc.org/specification) para detalhes.
+A comunicação com a API pública da CM é feita via **JSON RPC 2.0**.  
+Consulte [JSON RPC 2.0 Specification](http://www.jsonrpc.org/specification) para detalhes.  
+Principais objetos:
+- **Request**: Contém `jsonrpc`, `method`, `params` (parâmetros do método) e `id`.
+- **Response**: Contém `jsonrpc`, `result` (em caso de sucesso) ou `error` (quando ocorre erro) e `id`.
 
 ### Autenticação
 
-A autenticação é feita via **HTTP BASIC AUTHENTICATION**.
-Exemplo de URL: `http://username:password@server_address:server_port`
+A autenticação é feita via **HTTP BASIC AUTHENTICATION**.  
+Exemplo de URL: http://username:password@server_address:server_port
 
 ### Segurança
 
@@ -48,24 +51,26 @@ Exemplo de URL: `http://username:password@server_address:server_port`
 
 ### Parâmetros de objeto na requisição
 
-Tipos mais comuns:
+Alguns métodos permitem configurar parâmetros dinâmicos na requisição. Os tipos mais comuns são:
 - **boolean**: `true` ou `false`
 - **string**: valores de texto
 - **numeric**: valores numéricos
-- **orderby**: ordenar resultados (ex.: `orderby['name'] = "asc"`)
-- **limit**: limitar o número de resultados (ex.: `"0,10"`)
+- **orderby**: para ordenar resultados (ex.: `orderby['name'] = "asc"`)
+- **limit**: para limitar o número de resultados (ex.: `"0,10"`)
 - **data**: array dinâmico de parâmetros específicos para cada método
 
 ---
 
 ## Métodos
 
+O manual lista diversos métodos disponíveis na API. Abaixo, uma visão geral agrupada por categorias:
+
 ### Diretórios
 
-Métodos para manipulação de diretórios:
+Métodos para manipulação de diretórios, como:
 - `dir_get`, `dir_get_single`, `dir_count`, `dir_add`, `dir_mod`, `dir_del`
 - `dir_map_get`, `dir_map_add`, `dir_map_mod`, `dir_map_del`
-- Métodos para domínios (`dir_domain_*`), contas (`dir_account_*`) e grupos (`dir_group_*`)
+- Métodos específicos para domínios (`dir_domain_*`), contas (`dir_account_*`) e grupos (`dir_group_*`)
 - `dir_apply`: Aplica as alterações realizadas
 
 ### Contatos
@@ -94,19 +99,23 @@ Métodos para chamadas e monitoramento:
 - `tel_monitor_endpoint_get`, `tel_monitor_call_get`, `tel_monitor_call_get_single`
 - `tel_util_call`: Para realizar chamadas
 - `tel_util_hangup`: Para desligar chamadas ativas
+- Outros métodos para gravações, SMS, voicemail, etc.
 
 ### DB, SIP, Verto e Outros
 
 Métodos para:
 - Manipulação de banco de dados (`tel_db_get`, `tel_db_list`, `tel_db_insert`, `tel_db_del`)
-- Gerenciamento de templates SIP e Verto
-- Upload e download de sons, manipulação de IVRs
+- Gerenciamento de templates SIP e verto
+- Upload e download de sons, manipulação de IVRs e ações relacionadas
 
 ---
 
 ## Exemplos de Uso
 
-### Exemplo 1: Função genérica `api_call`
+O manual contém diversos exemplos de código em PHP. Alguns deles são:
+
+## Exemplo 1: Função genérica api_call
+Exemplo para realizar uma chamada à API utilizando a função api_call:
 
 <?php include("api_call.inc.php");
 $server = getenv('API_SERVER'); // Defina API_SERVER no ambiente
@@ -123,71 +132,95 @@ if (isset($data['result'])) {
 }
 ?>
 
-### Exemplo 2: Método `help`
-
-```php
+### Exemplo 2: Método help
+Exemplo para obter ajuda sobre os métodos disponíveis:
+<?php include("api_call.inc.php");
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
+$request = array();
+$request['id'] = mt_rand();
+$request['jsonrpc'] = "2.0";
+$request['method'] = "help";
 $request['params']['method_name'] = "help";
 $data = api_call($url, $request, false);
 echo($data);
-```
+?>
 
-### Exemplo 3: Método `tel_monitor_call_get`
-
-```php
+### Exemplo 3: Método tel_monitor_call_get
+Exemplo para listar chamadas ativas:
+<?php include("api_call.inc.php");
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
+$request = array();
+$request['id'] = mt_rand();
+$request['jsonrpc'] = "2.0";
 $request['method'] = "tel_monitor_call_get";
 $request['params']['limit'] = "0,10";
 $data = api_call($url, $request, false);
 echo($data);
-```
+?>
 
-### Exemplo 4: Método `tel_util_call`
 
-```php
+### Exemplo 4: Método tel_util_call
+Exemplo para realizar uma chamada entre dois números:
+<?php include("api_call.inc.php");
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
+$request = array();
+$request['id'] = mt_rand();
+$request['jsonrpc'] = "2.0";
 $request['method'] = "tel_util_call";
-$request['params'] = [
-  'aleg_destination' => "200",
-  'aleg_context' => "outgoing",
-  'bleg_destination' => "201",
-  'bleg_context' => "outgoing"
-];
+$request['params'] = array();
+$request['params']['aleg_destination'] = "200";
+$request['params']['aleg_context'] = "outgoing";
+$request['params']['bleg_destination'] = "201";
+$request['params']['bleg_context'] = "outgoing";
 $data = api_call($url, $request, false);
 echo($data);
-```
+?>
 
 ### Exemplo 5: Outros exemplos
+O documento contém também exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros. Basta seguir a estrutura dos exemplos acima e adaptar conforme a necessidade.
 
-O documento contém exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros.
-
----
-
-## Anexo I – Exemplo de Array de Filtro
+### Anexo I – Exemplo de Array de Filtro
+Exemplos de como criar arrays para filtros:
 
 ### Filtro simples:
-
-```php
+php
+Copiar
+Editar
 $filter['name'] = "200";
-```
 
 ### Filtro múltiplo:
-
-```php
+php
+Copiar
+Editar
 $filter['name'] = "200";
 $filter['type'] = "endpoint";
-```
 
 ### Filtro complexo com LIKE:
+php
+Copiar
+Editar
+$filter[] = array("name" => "name", "operator" => "LIKE", "value" => "%200%");
 
-```php
-$filter[] = ["name" => "name", "operator" => "LIKE", "value" => "%200%"];
-```
+### Filtro complexo com NOT LIKE:
+php
+Copiar
+Editar
+$filter[] = array("name" => "name", "operator" => "NOT LIKE", "value" => "200%");
 
 ### Filtro com operador >:
-
-```php
-$filter[] = ["name" => "duration", "operator" => ">", "value" => "3600"];
-```
+php
+Copiar
+Editar
+$filter[] = array("name" => "duration", "operator" => ">", "value" => "3600");
 
 ### Filtro com operador !=:
+php
+Copiar
+Editar
+$filter[] = array("name" => "name", "operator" => "!=", "value" => "200");
 
-```php
-$filter[] = ["name" => "name", "operator" => "!=", "value" => "200"];
+
+---
