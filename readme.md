@@ -26,7 +26,9 @@
 
 ## Sobre
 
-Este manual explica o uso do módulo API da CommsMundi (CM). Nele são listados todos os métodos disponíveis, acompanhados de exemplos básicos de uso em PHP. Outros idiomas podem ser utilizados, bastando adaptar os exemplos conforme necessário.
+API CM VoipSafe
+
+Este manual explica o uso do módulo API do CM - CommsMundi, plataforma de comunicação mundial desenvolvida na Europa e licenciada e distribuída no Brasil pela VoipSafe. Nele são listados todos os métodos disponíveis, acompanhados de exemplos básicos de uso em PHP. Outros idiomas podem ser utilizados, bastando adaptar os exemplos conforme necessário.
 
 ---
 
