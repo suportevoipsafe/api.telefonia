@@ -107,22 +107,19 @@ Métodos para:
 ## Exemplos de Uso
 
 ### Exemplo 1: Função genérica `api_call`
-Exemplo para realizar uma chamada à API utilizando a função api_call:
 
-<?php include("api_call.inc.php");
-$server = getenv('API_SERVER'); // Defina API_SERVER no ambiente
+```php
+include("api_call.inc.php");
+$server = getenv('API_SERVER');
 $url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
-$request = array();
-$request['id'] = mt_rand();
-$request['jsonrpc'] = "2.0";
-$request['method'] = "help";
+$request = [
+  'id' => mt_rand(),
+  'jsonrpc' => "2.0",
+  'method' => "help"
+];
 $data = api_call($url, $request);
-if (isset($data['result'])) {
-  foreach ($data['result'] as $method => $desc) {
-    echo $method . "," . $desc . "\n";
-  }
-}
-?>
+print_r($data);
+```
 
 ### Exemplo 2: Método `help`
 
