@@ -121,8 +121,8 @@ O manual contém diversos exemplos de código em PHP. Alguns deles são:
 Exemplo para realizar uma chamada à API utilizando a função `api_call`:
 ```php
 <?php include("api_call.inc.php");
-$server = "192.168.8.2:444";
-$url = "http://administrator:commsmundi@".$server;
+$server = getenv('API_SERVER'); // Defina API_SERVER no ambiente
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
 $request['id'] = mt_rand();
 $request['jsonrpc'] = "2.0";
@@ -130,7 +130,7 @@ $request['method'] = "help";
 $data = api_call($url, $request);
 if (isset($data['result'])) {
   foreach ($data['result'] as $method => $desc) {
-    echo $method.",".$desc."\n";
+    echo $method . "," . $desc . "\n";
   }
 }
 ?>
@@ -138,8 +138,8 @@ if (isset($data['result'])) {
 ### Exemplo 2: Método help
 Exemplo para obter ajuda sobre os métodos disponíveis:
 <?php include("api_call.inc.php");
-$server = "192.168.8.2:444";
-$url = "http://administrator:commsmundi@".$server;
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
 $request['id'] = mt_rand();
 $request['jsonrpc'] = "2.0";
@@ -152,8 +152,8 @@ echo($data);
 ### Exemplo 3: Método tel_monitor_call_get
 Exemplo para listar chamadas ativas:
 <?php include("api_call.inc.php");
-$server = "192.168.8.2:444";
-$url = "http://administrator:commsmundi@".$server;
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
 $request['id'] = mt_rand();
 $request['jsonrpc'] = "2.0";
@@ -163,11 +163,12 @@ $data = api_call($url, $request, false);
 echo($data);
 ?>
 
+
 ### Exemplo 4: Método tel_util_call
 Exemplo para realizar uma chamada entre dois números:
 <?php include("api_call.inc.php");
-$server = "192.168.8.2:444";
-$url = "http://administrator:commsmundi@".$server;
+$server = getenv('API_SERVER');
+$url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
 $request['id'] = mt_rand();
 $request['jsonrpc'] = "2.0";
@@ -180,6 +181,7 @@ $request['params']['bleg_context'] = "outgoing";
 $data = api_call($url, $request, false);
 echo($data);
 ?>
+
 
 ### Exemplo 5: Outros exemplos
 O documento contém também exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros. Basta seguir a estrutura dos exemplos acima e adaptar conforme a necessidade.
