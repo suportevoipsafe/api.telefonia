@@ -117,7 +117,9 @@ O manual contém diversos exemplos de código em PHP. Alguns deles são:
 ## Exemplo 1: Função genérica api_call
 Exemplo para realizar uma chamada à API utilizando a função api_call:
 
-<?php include("api_call.inc.php");
+```php
+<?php 
+include("api_call.inc.php");
 $server = getenv('API_SERVER'); // Defina API_SERVER no ambiente
 $url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
