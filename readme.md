@@ -15,11 +15,11 @@
   - [Telefônica](#telefônica)
   - [DB, SIP, Verto e Outros](#db-sip-verto-e-outros)
 - [Exemplos de Uso](#exemplos-de-uso)
-  - [Exemplo 1: Função genérica `api_call`](#exemplo-1-função-genérica-apicall)
-  - [Exemplo 2: Método `help`](#exemplo-2-método-help)
-  - [Exemplo 3: Método `tel_monitor_call_get`](#exemplo-3-método-tel_monitor_call_get)
-  - [Exemplo 4: Método `tel_util_call`](#exemplo-4-método-tel_util_call)
-  - [Exemplo 5: Outros exemplos](#exemplo-5-outros-exemplos)
+  - [Exemplo: Função genérica `api_call`](#exemplo-1-função-genérica-apicall)
+  - [Exemplo: Método `help`](#exemplo-2-método-help)
+  - [Exemplo: Método `tel_monitor_call_get`](#exemplo-3-método-tel_monitor_call_get)
+  - [Exemplo: Método `tel_util_call`](#exemplo-4-método-tel_util_call)
+  - [Exemplo: Outros exemplos](#exemplo-5-outros-exemplos)
 - [Anexo I – Exemplo de Array de Filtro](#anexo-i--exemplo-de-array-de-filtro)
 
 ---
@@ -114,7 +114,7 @@ Métodos para:
 
 O manual contém diversos exemplos de código em PHP. Alguns deles são:
 
-### Exemplo: Função genérica api_call
+## Exemplo: Função genérica api_call
 Exemplo para realizar uma chamada à API utilizando a função api_call:
 
 ```php
