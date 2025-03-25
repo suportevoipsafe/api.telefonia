@@ -195,29 +195,31 @@ O documento contém também exemplos para métodos de hangup, exportação de ca
 ### Anexo I – Exemplo de Array de Filtro
 Exemplos de como criar arrays para filtros:
 
-Filtro simples:
+### Filtro simples:
 php
 $filter['name'] = "200";
-Filtro múltiplo:
 
+### Filtro múltiplo:
 php
 $filter['name'] = "200";
 $filter['type'] = "endpoint";
-Filtro complexo com LIKE:
 
+### Filtro complexo com LIKE:
 php
 $filter[] = array("name" => "name", "operator" => "LIKE", "value" => "%200%");
-Filtro complexo com NOT LIKE:
 
+### Filtro complexo com NOT LIKE:
 php
 $filter[] = array("name" => "name", "operator" => "NOT LIKE", "value" => "200%");
-Filtro com operador >:
 
+### Filtro com operador >:
 php
 $filter[] = array("name" => "duration", "operator" => ">", "value" => "3600");
-Filtro com operador !=:
 
+### Filtro com operador !=:
 php
 $filter[] = array("name" => "name", "operator" => "!=", "value" => "200");
 
+
 ---
+
