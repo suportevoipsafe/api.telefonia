@@ -15,10 +15,10 @@
   - [Telefônica](#telefônica)
   - [DB, SIP, Verto e Outros](#db-sip-verto-e-outros)
 - [Exemplos de Uso](#exemplos-de-uso)
-  - [Exemplo: Função genérica `api_call`](#exemplo-1-função-genérica-apicall)
-  - [Exemplo: Método `help`](#exemplo-2-método-help)
-  - [Exemplo: Método `tel_monitor_call_get`](#exemplo-3-método-tel_monitor_call_get)
-  - [Exemplo: Método `tel_util_call`](#exemplo-4-método-tel_util_call)
+  - [Exemplo: Função genérica `api_call`](#exemplo-função-genérica-apicall)
+  - [Exemplo: Método `help`](#exemplo-método-help)
+  - [Exemplo: Método `tel_monitor_call_get`](#exemplo-método-tel_monitor_call_get)
+  - [Exemplo: Método `tel_util_call`](#exemplo-método-tel_util_call)
   - [Exemplo: Outros exemplos](#exemplo-5-outros-exemplos)
 - [Anexo I – Exemplo de Array de Filtro](#anexo-i--exemplo-de-array-de-filtro)
 
@@ -134,7 +134,7 @@ if (isset($data['result'])) {
 }
 ?>
 
-Exemplo: Método help
+## Exemplo: Método help
 Exemplo para obter ajuda sobre os métodos disponíveis:
 
 php
@@ -152,6 +152,7 @@ $request['params']['method_name'] = "help";
 $data = api_call($url, $request, false);
 echo($data);
 ?>
+
 Exemplo: Método tel_monitor_call_get
 Exemplo para listar chamadas ativas:
 
