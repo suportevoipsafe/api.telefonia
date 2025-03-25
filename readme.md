@@ -138,8 +138,6 @@ if (isset($data['result'])) {
 Exemplo para obter ajuda sobre os métodos disponíveis:
 
 php
-Copiar
-Editar
 <?php
 include("api_call.inc.php");
 $server = getenv('API_SERVER');
@@ -157,8 +155,6 @@ echo($data);
 Exemplo para listar chamadas ativas:
 
 php
-Copiar
-Editar
 <?php
 include("api_call.inc.php");
 $server = getenv('API_SERVER');
@@ -176,8 +172,6 @@ echo($data);
 Exemplo para realizar uma chamada entre dois números:
 
 php
-Copiar
-Editar
 <?php
 include("api_call.inc.php");
 $server = getenv('API_SERVER');
@@ -198,33 +192,32 @@ echo($data);
 ### Exemplo: Outros Exemplos
 O documento contém também exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros. Basta seguir a estrutura dos exemplos acima e adaptar conforme a necessidade.
 
-## Anexo I – Exemplo de Array de Filtro
-
+### Anexo I – Exemplo de Array de Filtro
 Exemplos de como criar arrays para filtros:
 
-### Filtro simples:
-```php
+Filtro simples:
+php
 $filter['name'] = "200";
 Filtro múltiplo:
-php
 
+php
 $filter['name'] = "200";
 $filter['type'] = "endpoint";
 Filtro complexo com LIKE:
-php
 
+php
 $filter[] = array("name" => "name", "operator" => "LIKE", "value" => "%200%");
 Filtro complexo com NOT LIKE:
-php
 
+php
 $filter[] = array("name" => "name", "operator" => "NOT LIKE", "value" => "200%");
 Filtro com operador >:
-php
 
+php
 $filter[] = array("name" => "duration", "operator" => ">", "value" => "3600");
 Filtro com operador !=:
-php
 
+php
 $filter[] = array("name" => "name", "operator" => "!=", "value" => "200");
 
 ---
