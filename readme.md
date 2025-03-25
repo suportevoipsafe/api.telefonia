@@ -207,27 +207,24 @@ Exemplos de como criar arrays para filtros:
 $filter['name'] = "200";
 Filtro múltiplo:
 php
-Copiar
-Editar
+
 $filter['name'] = "200";
 $filter['type'] = "endpoint";
 Filtro complexo com LIKE:
 php
-Copiar
-Editar
+
 $filter[] = array("name" => "name", "operator" => "LIKE", "value" => "%200%");
 Filtro complexo com NOT LIKE:
 php
-Copiar
-Editar
+
 $filter[] = array("name" => "name", "operator" => "NOT LIKE", "value" => "200%");
 Filtro com operador >:
 php
-Copiar
-Editar
+
 $filter[] = array("name" => "duration", "operator" => ">", "value" => "3600");
 Filtro com operador !=:
 php
-Copiar
-Editar
+
 $filter[] = array("name" => "name", "operator" => "!=", "value" => "200");
+
+---
