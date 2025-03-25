@@ -19,7 +19,7 @@
   - [Exemplo: Método `help`](#exemplo-método-help)
   - [Exemplo: Método `tel_monitor_call_get`](#exemplo-método-tel_monitor_call_get)
   - [Exemplo: Método `tel_util_call`](#exemplo-método-tel_util_call)
-  - [Exemplo: Outros exemplos](#exemplo-5-outros-exemplos)
+  - [Exemplo: Outros exemplos](#exemplo-outros-exemplos)
 - [Anexo I – Exemplo de Array de Filtro](#anexo-i--exemplo-de-array-de-filtro)
 
 ---
@@ -114,7 +114,7 @@ Métodos para:
 
 O manual contém diversos exemplos de código em PHP. Alguns deles são:
 
-Exemplo: Função genérica api_call
+## Exemplo: Função genérica api_call
 Exemplo para realizar uma chamada à API utilizando a função api_call:
 
 ```php
@@ -134,7 +134,7 @@ if (isset($data['result'])) {
 }
 ?>
 
-Exemplo: Método help
+## Exemplo: Método help
 Exemplo para obter ajuda sobre os métodos disponíveis:
 
 php
@@ -153,7 +153,7 @@ $data = api_call($url, $request, false);
 echo($data);
 ?>
 
-Exemplo: Método tel_monitor_call_get
+## Exemplo: Método tel_monitor_call_get
 Exemplo para listar chamadas ativas:
 
 php
@@ -172,7 +172,7 @@ $data = api_call($url, $request, false);
 echo($data);
 ?>
 
-Exemplo: Método tel_util_call
+## Exemplo: Método tel_util_call
 Exemplo para realizar uma chamada entre dois números:
 
 php
@@ -195,7 +195,7 @@ $data = api_call($url, $request, false);
 echo($data);
 ?>
 
-### Exemplo 5: Outros Exemplos
+### Exemplo: Outros Exemplos
 O documento contém também exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros. Basta seguir a estrutura dos exemplos acima e adaptar conforme a necessidade.
 
 ## Anexo I – Exemplo de Array de Filtro
