@@ -114,7 +114,7 @@ Métodos para:
 
 O manual contém diversos exemplos de código em PHP. Alguns deles são:
 
-## Exemplo 1: Função genérica api_call
+### Exemplo: Função genérica api_call
 Exemplo para realizar uma chamada à API utilizando a função api_call:
 
 ```php
@@ -134,9 +134,14 @@ if (isset($data['result'])) {
 }
 ?>
 
-### Exemplo 2: Método help
+Exemplo: Método help
 Exemplo para obter ajuda sobre os métodos disponíveis:
-<?php include("api_call.inc.php");
+
+php
+Copiar
+Editar
+<?php
+include("api_call.inc.php");
 $server = getenv('API_SERVER');
 $url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
@@ -147,10 +152,14 @@ $request['params']['method_name'] = "help";
 $data = api_call($url, $request, false);
 echo($data);
 ?>
-
-### Exemplo 3: Método tel_monitor_call_get
+Exemplo: Método tel_monitor_call_get
 Exemplo para listar chamadas ativas:
-<?php include("api_call.inc.php");
+
+php
+Copiar
+Editar
+<?php
+include("api_call.inc.php");
 $server = getenv('API_SERVER');
 $url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
@@ -161,11 +170,14 @@ $request['params']['limit'] = "0,10";
 $data = api_call($url, $request, false);
 echo($data);
 ?>
-
-
-### Exemplo 4: Método tel_util_call
+Exemplo: Método tel_util_call
 Exemplo para realizar uma chamada entre dois números:
-<?php include("api_call.inc.php");
+
+php
+Copiar
+Editar
+<?php
+include("api_call.inc.php");
 $server = getenv('API_SERVER');
 $url = "http://" . getenv('API_USERNAME') . ":" . getenv('API_PASSWORD') . "@" . $server;
 $request = array();
@@ -181,48 +193,39 @@ $data = api_call($url, $request, false);
 echo($data);
 ?>
 
-### Exemplo 5: Outros exemplos
+### Exemplo 5: Outros Exemplos
 O documento contém também exemplos para métodos de hangup, exportação de campanhas, manipulação de agentes, conferências, entre outros. Basta seguir a estrutura dos exemplos acima e adaptar conforme a necessidade.
 
-### Anexo I – Exemplo de Array de Filtro
+## Anexo I – Exemplo de Array de Filtro
+
 Exemplos de como criar arrays para filtros:
 
 ### Filtro simples:
-php
-Copiar
-Editar
+```php
 $filter['name'] = "200";
-
-### Filtro múltiplo:
+Filtro múltiplo:
 php
 Copiar
 Editar
 $filter['name'] = "200";
 $filter['type'] = "endpoint";
-
-### Filtro complexo com LIKE:
+Filtro complexo com LIKE:
 php
 Copiar
 Editar
 $filter[] = array("name" => "name", "operator" => "LIKE", "value" => "%200%");
-
-### Filtro complexo com NOT LIKE:
+Filtro complexo com NOT LIKE:
 php
 Copiar
 Editar
 $filter[] = array("name" => "name", "operator" => "NOT LIKE", "value" => "200%");
-
-### Filtro com operador >:
+Filtro com operador >:
 php
 Copiar
 Editar
 $filter[] = array("name" => "duration", "operator" => ">", "value" => "3600");
-
-### Filtro com operador !=:
+Filtro com operador !=:
 php
 Copiar
 Editar
 $filter[] = array("name" => "name", "operator" => "!=", "value" => "200");
-
-
----
