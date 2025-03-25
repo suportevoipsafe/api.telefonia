@@ -114,7 +114,7 @@ Métodos para:
 
 O manual contém diversos exemplos de código em PHP. Alguns deles são:
 
-## Exemplo: Função genérica api_call
+Exemplo: Função genérica api_call
 Exemplo para realizar uma chamada à API utilizando a função api_call:
 
 ```php
@@ -134,7 +134,7 @@ if (isset($data['result'])) {
 }
 ?>
 
-## Exemplo: Método help
+Exemplo: Método help
 Exemplo para obter ajuda sobre os métodos disponíveis:
 
 php
@@ -171,6 +171,7 @@ $request['params']['limit'] = "0,10";
 $data = api_call($url, $request, false);
 echo($data);
 ?>
+
 Exemplo: Método tel_util_call
 Exemplo para realizar uma chamada entre dois números:
 
