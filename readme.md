@@ -1,4 +1,4 @@
-# Comms Mundi - API v1
+# API CM VOIPSAFE
 
 ## Sumário
 - [Sobre](#sobre)
@@ -36,7 +36,7 @@ Este manual explica o uso do módulo API do CM - CommsMundi, plataforma de comun
 
 ### Protocol
 
-A comunicação com a API pública da CM é feita via **JSON RPC 2.0**.  
+A comunicação com a API pública do CM é feita via **JSON RPC 2.0**.  
 Consulte [JSON RPC 2.0 Specification](http://www.jsonrpc.org/specification) para detalhes.  
 Principais objetos:
 - **Request**: Contém `jsonrpc`, `method`, `params` (parâmetros do método) e `id`.
