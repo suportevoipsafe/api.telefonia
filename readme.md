@@ -1,4 +1,4 @@
-# API CM VOIPSAFE
+# API VOIPSAFE
 
 ## Sumário
 - [Sobre](#sobre)
@@ -26,9 +26,9 @@
 
 ## Sobre
 
-API CM VoipSafe
+API VoipSafe
 
-Este manual explica o uso do módulo API do CM - CommsMundi, plataforma de comunicação mundial desenvolvida na Europa e licenciada e distribuída no Brasil pela VoipSafe. Nele são listados todos os métodos disponíveis de conexão.
+Este manual explica o uso do módulo API da VoipSafe, plataforma de comunicação da VoipSafe. Nele são listados todos os métodos disponíveis de conexão.
 
 ---
 
@@ -36,7 +36,7 @@ Este manual explica o uso do módulo API do CM - CommsMundi, plataforma de comun
 
 ### Protocol
 
-A comunicação com a API pública do CM é feita via **JSON RPC 2.0**.  
+A comunicação com a API pública é feita via **JSON RPC 2.0**.  
 Consulte [JSON RPC 2.0 Specification](http://www.jsonrpc.org/specification) para detalhes.  
 Principais objetos:
 - **Request**: Contém `jsonrpc`, `method`, `params` (parâmetros do método) e `id`.
